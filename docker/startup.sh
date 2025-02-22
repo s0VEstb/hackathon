@@ -5,11 +5,9 @@ python manage.py migrate
 echo "Creating superuser if not exists..."
 python manage.py shell <<EOF
 from django.contrib.auth import get_user_model
-from django.core.management import call_command
-
 User = get_user_model()
 if not User.objects.filter(username='1').exists():
-    User.objects.create_superuser('1', '', '1')
+    User.objects.create_superuser(username='1', email='1@gmail.com', password='1')
 EOF
 
 echo "Collecting static files..."
