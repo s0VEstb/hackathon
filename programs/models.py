@@ -1,4 +1,3 @@
-import json
 from django.db import models
 
 class Place(models.Model):
@@ -24,8 +23,11 @@ class University(models.Model):
     gre_required = models.BooleanField(default=False)  # Требуется ли GRE
     gpa_requirement = models.FloatField(blank=True, null=True)  # Требуемый GPA
     deadlines = models.JSONField(default=list)  # Дедлайны (список)
-    application_link = models.URLField(max_length=10000,blank=True, null=True)  # Ссылка на подачу заявки
-    link_detail = models.URLField(max_length=10000,blank=True, null=True)  # Ссылка на детали курса
+    application_link = models.URLField(max_length=10000, blank=True, null=True)  # Ссылка на подачу заявки
+    link_detail = models.URLField(max_length=10000, blank=True, null=True)  # Ссылка на детали курса
+    # Новые поля
+    english_language_level = models.CharField(max_length=500, blank=True, null=True)
+    german_language_level = models.CharField(max_length=500, blank=True, null=True)
 
     def __str__(self):
         return f'{self.course_name} - {self.name} - {self.place.name}'
